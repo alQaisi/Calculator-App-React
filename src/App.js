@@ -1,24 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
+import ButtonsContainer from './components/buttonsContainer/buttonsContainer.component';
+import ResultBox from './components/resultBox/resultBox.component';
+import Header from './components/header/Header.component';
 import './App.css';
+import { CalculatorContext } from './context/calculator.context';
+import { useContext } from 'react';
 
 function App() {
+  const {theme}=useContext(CalculatorContext);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={"App "+theme}>
+      <main >
+        <Header/>
+        <ResultBox/>
+        <ButtonsContainer/>
+      </main>
     </div>
   );
 }
