@@ -1,0 +1,2 @@
+@import url(https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap);*{font-family:League Spartan,sans-serif}html{font-size:32px}body{margin:0;padding:0}.App,body{box-sizing:border-box;overflow-x:hidden}.App{background-color:#3a4764;display:grid;height:100%;max-width:100vw;min-height:100vh;min-width:100vw;overflow-y:auto;place-items:center}.App.theme2,.theme2 main{background-color:#e6e6e6}.App.theme3,.theme3 main{background-color:#160628}main{margin:25px auto;max-width:550px;position:relative;width:90%}
+/*# sourceMappingURL=main.7f4e5cb3.css.map*/
