@@ -26,6 +26,10 @@ const caclulatorReducer=function(state,action){
                 ...state,
                 ...payload
             }
+        default:
+            return{
+                state
+            }
     }
 }
 
@@ -77,6 +81,8 @@ export function CalculatorProvider({children}){
                 return number1*number2;
             case "/":
                 return number1/number2;
+            default:
+                throw new Error("Error !")
         }
     }
     function getResult(){
