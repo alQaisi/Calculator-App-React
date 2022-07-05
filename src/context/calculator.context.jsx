@@ -55,7 +55,6 @@ export function CalculatorProvider({children}){
     function changeOperation(evt,keyOperation){
         if(keyOperation)
             keyOperation=keyOperation==="*"?"x":keyOperation;
-        console.log(keyOperation)
         const operation=keyOperation ||evt.target.dataset.id ;
         let resultValue=""
         if(num1==="")
@@ -75,7 +74,6 @@ export function CalculatorProvider({children}){
     function calculating(){
         const number1=parseFloat(num1);
         const number2=parseFloat(num2);
-        console.log(operation);
         switch(operation){
             case "+":
                 return number1+number2;
