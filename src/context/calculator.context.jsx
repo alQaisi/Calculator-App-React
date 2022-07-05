@@ -42,8 +42,8 @@ export function CalculatorProvider({children}){
         localStorage.setItem("theme",newTheme)
         setTheme(newTheme);
     }
-    function setNum(evt){
-        const num=evt.target.dataset.id;
+    function setNum(evt,keyNumber){
+        const num=keyNumber || evt.target.dataset.id;
         if(num==="." && result.includes("."))
             return null;
         if(result[0]==="0" && result.length===1 && num==="0")
@@ -52,8 +52,11 @@ export function CalculatorProvider({children}){
         const number=operation===""?{num1:newValue}:{num2:newValue}
         dispatch({type:"CALCULATOR_MODIFICATION",payload:{...number,result:newValue}});
     }
-    function changeOperation(evt){
-        const operation=evt.target.dataset.id;
+    function changeOperation(evt,keyOperation){
+        if(keyOperation)
+            keyOperation=keyOperation==="*"?"x":keyOperation;
+        console.log(keyOperation)
+        const operation=keyOperation ||evt.target.dataset.id ;
         let resultValue=""
         if(num1==="")
             return null;
@@ -72,6 +75,7 @@ export function CalculatorProvider({children}){
     function calculating(){
         const number1=parseFloat(num1);
         const number2=parseFloat(num2);
+        console.log(operation);
         switch(operation){
             case "+":
                 return number1+number2;
@@ -100,7 +104,7 @@ export function CalculatorProvider({children}){
     function reset(){
         dispatch({type:"RESET",payload:INITIAL_STATE});
     }
-    function deleteNum(evt){
+    function deleteNum(){
         const check=prev[prev.length-1]*1;
         if(prev.includes(" ") && check===check)
             return reset();
