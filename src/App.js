@@ -7,9 +7,33 @@ import { CalculatorContext } from './context/calculator.context';
 import { useContext } from 'react';
 
 function App() {
-  const {theme}=useContext(CalculatorContext);
+  
+  const {theme,setNum,deleteNum,getResult,changeOperation}=useContext(CalculatorContext);
+  
+  function handleKeyboardEvents(evt){
+
+    const numbers=".0123456789";
+    const operations="-+*/";
+    const resultKeys="Enter="
+    const {key}=evt;
+
+    switch(true){
+      case numbers.includes(key):
+        return setNum(null,key);
+      case operations.includes(key):
+        return changeOperation(null,key);
+      case key==="Backspace":
+        return deleteNum();
+      case resultKeys.includes(key):
+        return getResult();
+      default:
+        return null;
+    }
+
+  }
+
   return (
-    <div className={"App "+theme}>
+    <div className={"App "+theme} tabIndex={0} onKeyDown={handleKeyboardEvents}>
       <main >
         <Header/>
         <ResultBox/>
