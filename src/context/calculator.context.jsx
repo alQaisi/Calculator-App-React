@@ -27,9 +27,7 @@ const caclulatorReducer=function(state,action){
                 ...payload
             }
         default:
-            return{
-                state
-            }
+            return state;
     }
 }
 
